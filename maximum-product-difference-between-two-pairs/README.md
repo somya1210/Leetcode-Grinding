@@ -1,3 +1,4 @@
+[Discussion Post (created on 11/6/2021 at 16:19)](https://leetcode.com/problems/maximum-product-difference-between-two-pairs/discuss/1330958/C%2B%2B-O(Nlogn)-to-O(N))  
 <h2>1913. Maximum Product Difference Between Two Pairs</h2><h3>Easy</h3><hr><div><p>The <strong>product difference</strong> between two pairs <code>(a, b)</code> and <code>(c, d)</code> is defined as <code>(a * b) - (c * d)</code>.</p>
 
 <ul>
