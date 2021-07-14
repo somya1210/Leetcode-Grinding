@@ -20,6 +20,14 @@ public:
         ans.push_back(first);
         ans.push_back(second);
         return ans;
+    
+        // This Problem says to find the numbers whose frequency is 1
+        // so for this we first tried to find xor of all the numbers , so we finally left with the non repeating numbers , after this we have to find the individual numbers from the given xor
+        // for this we find the first set bit from the right 
+        // rightbit= _xor^(_xor&(_xor-1))
+        // rightmost set bit means that the two numbers have different bit at that bit number
+        // after this we traverse the array once again and try to grp the elements on the basis of that bit is set at that bit number or not 
+        // so finally we have the two numbers in diff grps
         
     }
 };
