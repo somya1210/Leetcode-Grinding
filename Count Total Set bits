@@ -1,0 +1,8 @@
+// total number of set bits for the numbers from 1 to n
+int count(n)
+{ int x=log2(n); // highest power of 2 smaller than n
+int before=pow(2,x-1)*x; // so the number of set bits before the highest power of n
+int after=n-pow(2,x)+1;
+int solve=count(n-pow(2,x));
+return before+after+solve;
+}
