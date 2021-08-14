@@ -1,29 +1,21 @@
 class Solution {
 public:
-   
-    void fun(vector<vector<int>>& image, int sr, int sc, int newColor,int ele)
-{if(sr<0||sc<0)
- return;
- if(sr>=image.size()||sc>=image[0].size())
- return;
- if(image[sr][sc]!=ele)
-return;
- if(image[sr][sc]==newColor)
- return;
-
-     image[sr][sc]=newColor;
-        fun(image,sr+1,sc,newColor,ele);
-        fun(image,sr-1,sc,newColor,ele);
-        fun(image,sr,sc+1,newColor,ele);
-        fun(image,sr,sc-1,newColor,ele);
-        return;
-   
-}
+    void dfs(int i,int j,int color,vector<vector<int>>& grid,int oldcolor)
+    {
+        if(i<0||j<0||i>=grid.size()||j>=grid[0].size())
+            return;
+        if(grid[i][j]==color)
+            return;
+        if(grid[i][j]!=oldcolor)
+            return;
+        grid[i][j]=color;
+        dfs(i+1,j,color,grid,oldcolor);
+        dfs(i-1,j,color,grid,oldcolor);
+        dfs(i,j+1,color,grid,oldcolor);
+        dfs(i,j-1,color,grid,oldcolor);
+    }
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
-        // Code here 
-        int ele=image[sr][sc];
-        fun(image,sr,sc,newColor,ele);
-        return image;
-   
+     dfs(sr,sc,newColor,image,image[sr][sc]);
+         return image;
     }
 };
