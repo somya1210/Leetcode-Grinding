@@ -11,20 +11,20 @@
  */
 class Solution {
 public:
-    void find(TreeNode* root,vector<string>&ans,string curr)
+    void find(TreeNode* root,vector<string>&ans,string s)
     {
         if(!root)
-            return;
-        
+            return ;
         if(root->left==nullptr&&root->right==nullptr)
-        {
-            curr=curr+to_string(root->val);
-            ans.push_back(curr); return;
+        {    s+=to_string(root->val);
+            ans.push_back(s);
+         return;
         }
-        curr=curr+to_string(root->val);
-        curr+="->";
-        find(root->left,ans,curr);
-        find(root->right,ans,curr);
+        s+=to_string(root->val);
+        s+="->";
+        find(root->left,ans,s);
+        find(root->right,ans,s);
+        
     }
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string>ans;
