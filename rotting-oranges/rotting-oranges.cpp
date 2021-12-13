@@ -28,38 +28,33 @@ public:
                 q.pop();
                 if(inbound(x-1,y,n,m)&&grid[x-1][y]==1)
                 {
-                    if(first)
-                    { time++;
-                    first=false;}
+                 
                     q.push({x-1,y});
                     grid[x-1][y]=2;
                 }
                 if(inbound(x+1,y,n,m)&&grid[x+1][y]==1)
                 {
-                    if(first)
-                    { time++;
-                    first=false;}
+                 
                     q.push({x+1,y});
                     grid[x+1][y]=2;
                 }
                 if(inbound(x,y-1,n,m)&&grid[x][y-1]==1)
                 {
-                    if(first)
-                    {time++;
-                    first=false;}
+                
                     q.push({x,y-1});
                     grid[x][y-1]=2;
                 }
                 if(inbound(x,y+1,n,m)&&grid[x][y+1]==1)
                 {
-                    if(first)
-                    {time++;
-                    first=false;}
+               
                     q.push({x,y+1});
                     grid[x][y+1]=2;
                 }
             }
-        }
+            if(q.empty()==false)
+                time++;
+           
+        }//&&grid[x][y]==1 is impo condition kyunki tab hi to pta chalega ki isme fresh h to isko rot kar do,kyunki agr emoty hua to nhi fill ho paega na
          for(int i=0;i<grid.size();i++)
         {
             for(int j=0;j<grid[0].size();j++)
