@@ -1,29 +1,19 @@
 class Solution {
 public:
-    vector<int> find(int i,vector<int>&nums)
-    { 
-        vector<int>ans;
-        int j=0;
-        while(i)
-        {
-            if(i%2!=0)
-                ans.push_back(nums[j]);
-            j++;
-            i=i>>1;
-                
-        }
-        return ans;
-    }
     vector<vector<int>> subsets(vector<int>& nums) {
-        int n=nums.size();
-        // so total subsets generated will be 2^n;
-        int total=pow(2,n);
-     vector<vector<int>>ans;
-        for(int i=0;i<total;i++)
+                vector<vector<int>>result;
+        vector<int>inter;
+        calculate(nums,result,inter,0);
+        return result;
+    }
+    void calculate(vector<int>&nums,vector<vector<int>>&result,vector<int>&inter,int begin)
+    {
+        result.push_back(inter);
+        for(int i=begin;i<nums.size();i++)
         {
-            vector<int>inter=find(i,nums);
-            ans.push_back(inter);
+            inter.push_back(nums[i]);
+            calculate(nums,result,inter,i+1);
+            inter.pop_back();
         }
-        return ans;
     }
 };
