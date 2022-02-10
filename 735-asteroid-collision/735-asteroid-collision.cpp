@@ -10,7 +10,8 @@ public:
             }
             else {
                 while(!s.empty() and s.top() > 0 and s.top() < abs(ast[i])) {
-                    s.pop();
+                    s.pop(); 
+                    //
                 }
                 if(!s.empty() and s.top() == abs(ast[i])) {
                     s.pop();
