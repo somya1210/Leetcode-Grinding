@@ -8,18 +8,6 @@ public:
     }
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
         int n=mat.size(),m=mat[0].size();
-       // bool vis[10001][10001]; 
-          vector<vector<int>> vis(n, vector<int> (m));
-      // memset(vis,0,sizeof(vis));
-                for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<m;j++)
-            {
-               
-                 vis[i][j]=0;
-                
-            }
-        }
         queue<pair<int,int>>q;
         for(int i=0;i<n;i++)
         {
@@ -27,8 +15,10 @@ public:
             {
                 if(mat[i][j]==0)
                 {q.push({i,j}); 
-                 vis[i][j]=1;
+                 
                 }
+                if(mat[i][j]==1)
+                    mat[i][j]=-1;
             }
         }
         int level=1;
@@ -40,29 +30,29 @@ public:
                 int x=q.front().first;
                 int y=q.front().second;
                 q.pop();
-                if(in(x+1,y,n,m)&&!vis[x+1][y])
+                if(in(x+1,y,n,m)&&mat[x+1][y]==-1)
                 {
                     mat[x+1][y]=mat[x][y]+1;
                     q.push({x+1,y});
-                    vis[x+1][y]=1;
+                   // vis[x+1][y]=1;
                 }
-                if(in(x-1,y,n,m)&&!vis[x-1][y])
+                if(in(x-1,y,n,m)&&mat[x-1][y]==-1)
                 {
                     mat[x-1][y]=mat[x][y]+1;
                     q.push({x-1,y});
-                    vis[x-1][y]=1;
+                    //vis[x-1][y]=1;
                 }
-                if(in(x,y+1,n,m)&&!vis[x][y+1])
+                if(in(x,y+1,n,m)&&mat[x][y+1]==-1)
                 {
                     mat[x][y+1]=mat[x][y]+1;
                     q.push({x,y+1});
-                    vis[x][y+1]=1;
+                    //vis[x][y+1]=1;
                 }
-                if(in(x,y-1,n,m)&&mat[x][y-1]==1&&!vis[x][y-1])
+                if(in(x,y-1,n,m)&&mat[x][y-1]==-1)
                 {
                     mat[x][y-1]=mat[x][y]+1;
                     q.push({x,y-1});
-                    vis[x][y-1]=1;
+                    //vis[x][y-1]=1;
                 }
             }
             
