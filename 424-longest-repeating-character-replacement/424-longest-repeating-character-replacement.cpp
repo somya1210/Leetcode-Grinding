@@ -36,7 +36,7 @@ public:
                 }
             }
             j++;
-            
+            // like k character replacement only revise it properly
         }
         return ans;
     }
