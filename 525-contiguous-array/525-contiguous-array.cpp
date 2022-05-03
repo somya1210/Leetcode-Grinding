@@ -43,10 +43,13 @@ public:
         // 3->4
         map<int,int>map;
         int j=0,ans=0,sum=0;
-        map[0]=-1;
+       // map[0]=-1;
         while(j<nums.size())
         {
             sum+=nums[j];
+            if(sum==0)
+                ans=max(ans,j+1);
+            else
             if(map.find(sum)!=map.end())
                 {
                    int ind=map[sum];
