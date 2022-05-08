@@ -14,13 +14,13 @@ class Solution
         while(beg<=end)
         {
             int mid=beg+(end-beg)/2;
-            if(v[mid]==0)
+            if(v[mid]==1)
             {
                 ans=mid;
-                beg=mid+1;
+                end=mid-1;
             }
             else
-             end=mid-1;
+             beg=mid+1;
         }
         return ans;
     }
@@ -31,8 +31,10 @@ class Solution
             for(int i=0;i<N;i++)
             {
                 int index_zero=binarysearch(Mat[i]);
-               // cout<<index_zero;
-                int no_of_one=M-1-index_zero;
+              // cout<<index_zero;
+               int no_of_one;
+               if(index_zero!=-1)
+                no_of_one=M-index_zero;
                 if(no_of_one>ans)
                 {
                     ans=no_of_one;
