@@ -9,13 +9,13 @@ using namespace std;
 
 class Solution {
   public:
-    vector<vector<int>> rotateMatrix(int M, int N, vector<vector<int>> mat) {
+    vector<vector<int>> rotateMatrix(int M, int N, vector<vector<int>> Mat) {
         // code here
-      /*   vector<vector<int>>ans=Mat;
+         vector<vector<int>>ans=Mat;
         int left=0,right=N-1;
         int top=0,bottom=M-1;
         int prev,curr;
-        while(left<right&&top<bottom)//ans.size()<M*N)
+        while(left<=right&&top<=bottom)//ans.size()<M*N)
         {
             if(left==right||top==bottom)
             break;
@@ -34,7 +34,7 @@ class Solution {
                 prev=curr;
             }
             right--;
-            if(top<bottom)
+            if(top<=bottom)
            { for(int i=right;i>=left;i--)
             {
                 curr=Mat[bottom][i];
@@ -44,7 +44,7 @@ class Solution {
             
            }
            bottom--;
-            if(left<right)
+            if(left<=right)
             {for(int i=bottom;i>=top;i--)
             {
                 curr=Mat[i][left];
@@ -57,59 +57,8 @@ class Solution {
         }
         ans=Mat;
         return ans;
-        */
-        vector<vector<int>> result= mat;
-int row = 0, col = 0;
-int prev, curr;
-int lastRow= M;
-int lastCol= N;
-while (row < lastRow && col < lastCol)
-
-{
-if (row + 1 == lastRow || col + 1 == lastCol) break;
-
-prev = mat[row + 1][col];
-//for the first row which is in bounds
-for (int i = col; i < lastCol; i++)
-{
-curr = mat[row][i];
-mat[row][i] = prev;
-prev = curr;
-}
-row++;
-//for the last column which is in bounds
-for (int i = row; i < lastRow; i++)
-{
-curr = mat[i][lastCol-1];
-mat[i][lastCol-1] = prev;
-prev = curr;
-}
-lastCol--;
-//for the last row which is in bounds
-if (row < lastRow)
-{
-for (int i = lastCol-1; i >= col; i--)
-{
-curr = mat[lastRow-1][i];
-mat[lastRow-1][i] = prev;
-prev = curr;
-}
-}
-lastRow--;
-//for the first row which is in bounds
-if (col < lastCol)
-{
-for (int i = lastRow-1; i >= row; i--)
-{
-curr = mat[i][col];
-mat[i][col] = prev;
-prev = curr;
-}
-}
-col++;
-}
-result = mat;
-return result;
+        
+       
 }
 };
 
