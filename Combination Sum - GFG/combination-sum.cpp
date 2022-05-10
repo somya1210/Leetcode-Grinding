@@ -31,11 +31,12 @@ class Solution {
             return;
         }
         for(int i=begin;i<A.size();i++)
-        {   if(i>begin&&A[i]==A[i-1])
-             continue;
+        {   if(i==begin||A[i]!=A[i-1])
+             {
             x.push_back(A[i]);
             find(A,ans,x,sum-A[i],i);
             x.pop_back();
+        }
         }
     }
 };
