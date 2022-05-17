@@ -1,27 +1,23 @@
 class Solution {
 public:
-    int dp[201][201];
     int minPathSum(vector<vector<int>>& grid) {
-        memset(dp,-1,sizeof(dp));
-        return find(0,0,grid);
+      //  vector<vector<int>>dp
+        for(int i=1;i<grid.size();i++)
+        {
+            grid[i][0]+=grid[i-1][0];
+        }
+         for(int i=1;i<grid[0].size();i++)
+        {
+            grid[0][i]+=grid[0][i-1];
+        }
+        for(int i=1;i<grid.size();i++)
+        {
+            for(int j=1;j<grid[0].size();j++)
+            {
+                grid[i][j]+=min(grid[i-1][j],grid[i][j-1]);
+            }
+        }
         
-    }
-    int find(int i,int j,vector<vector<int>>& grid)
-    {
-        if(i<0||j<0||i>=grid.size()||j>=grid[0].size())
-            return INT_MAX;
-        if(i+1==grid.size()&&j+1==grid[0].size())
-        {
-            return dp[i][j]=grid[i][j];
-        }
-        if(dp[i][j]!=-1)
-        {
-            return dp[i][j];
-        }
-        int right=find(i,j+1,grid);
-        int down=find(i+1,j,grid);
-        int ans=min(right,down)+grid[i][j];
-        dp[i][j]=ans;
-        return ans;
+        return grid[grid.size()-1][grid[0].size()-1];
     }
 };
